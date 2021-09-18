@@ -10,16 +10,17 @@ namespace SnakeLadder
         const int START_POSITION = 0, END_POSITION = 100, LADDER = 0, SNAKE = 1;
 
         // initialize variables
-        int playerPosition = START_POSITION;
+        int playerPosition = START_POSITION, dieRollCount = 0;
 
         // initialize random number generator
         Random random = new Random();
 
         // Add is won method to check player won or not
-        public void IsWon()
+        public int IsWon()
         {
             while (playerPosition < END_POSITION)
             {
+                dieRollCount++;
                 int playOption = random.Next(3);
                 int dieValue = random.Next(1, 7);
                 Console.WriteLine($"Rolled Die and got: {dieValue}.");
@@ -43,8 +44,8 @@ namespace SnakeLadder
                         break;
                 }
                 Console.WriteLine($"Your present position is: {playerPosition}\n");
-
             }
+            return dieRollCount;
         }
     }
 }
