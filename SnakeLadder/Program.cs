@@ -6,8 +6,9 @@ namespace SnakeLadder
     {
         static void Main(string[] args)
         {
-            // roll die
-            int playerPosition = new Play().RollDie();
+            // Check Whether player Won or not
+            new Play().IsWon();
+            Console.WriteLine("Hurray! You Won...");
         }
     }
 }

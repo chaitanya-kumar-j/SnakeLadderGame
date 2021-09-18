@@ -7,7 +7,7 @@ namespace SnakeLadder
     class Play
     {
         // initialize constants
-        const int START_POSITION = 0, END_POSITION = 100, NO_PLAY = 0, LADDER = 1, SNAKE = 2;
+        const int START_POSITION = 0, END_POSITION = 100, LADDER = 0, SNAKE = 1;
 
         // initialize variables
         int playerPosition = START_POSITION;
@@ -15,28 +15,41 @@ namespace SnakeLadder
         // initialize random number generator
         Random random = new Random();
 
-        // Add rolldie method to generate randome die value
-        public int RollDie()
+        // Add is won method to check player won or not
+        public void IsWon()
         {
-            int playOption = random.Next(3);
-            int dieValue = random.Next(1, 7);
-            Console.WriteLine($"Rolled Die and got: {dieValue}");
-            switch (playOption)
+            while (playerPosition < END_POSITION)
             {
-                case LADDER:
-                    Console.WriteLine($"Wow! you got Ladder");
-                    playerPosition += dieValue;
-                    break;
-                case SNAKE:
-                    Console.WriteLine($"Oh! you got Snake");
-                    playerPosition -= dieValue;
-                    break;
-                default:
-                    Console.WriteLine($"Stay safe! you got same position");
-                    break;
+                int playOption = random.Next(3);
+                int dieValue = random.Next(1, 7);
+                Console.WriteLine($"Rolled Die and got: {dieValue}.");
+                switch (playOption)
+                {
+                    case LADDER:
+                        playerPosition += dieValue;
+                        if (playerPosition > END_POSITION)
+                        {
+                            playerPosition -= dieValue;
+                            Console.WriteLine($"Oho!You need {END_POSITION - playerPosition} but got {dieValue}.So roll again...");
+                            break;
+                        }
+                        Console.WriteLine($"Wow! you got Ladder.");
+                        break;
+                    case SNAKE:
+                        Console.WriteLine($"Oho! you got Snake");
+                        playerPosition -= dieValue;
+                        if (playerPosition < START_POSITION)
+                        {
+                            Console.WriteLine($"Don't Worry! you will be at {START_POSITION} only.");
+                            playerPosition += dieValue;
+                        }                            
+                        break;
+                    default:
+                        Console.WriteLine($"Stay safe! you got same position.");
+                        break;
+                }
+                Console.WriteLine($"Your present position is: {playerPosition}\n");
             }
-            Console.WriteLine($"player present position is: {playerPosition}");
-            return playerPosition;
         }
     }
 }
