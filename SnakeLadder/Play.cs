@@ -49,6 +49,7 @@ namespace SnakeLadder
                         break;
                 }
                 Console.WriteLine($"Your present position is: {playerPosition}\n");
+
             }
         }
     }
