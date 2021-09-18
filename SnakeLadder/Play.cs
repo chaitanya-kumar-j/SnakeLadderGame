@@ -28,6 +28,12 @@ namespace SnakeLadder
                 {
                     case LADDER:
                         playerPosition += dieValue;
+                        if (playerPosition > END_POSITION)
+                        {
+                            playerPosition -= dieValue;
+                            Console.WriteLine($"Oho!You need {END_POSITION - playerPosition} but got {dieValue}.So roll again...");
+                            break;
+                        }
                         Console.WriteLine($"Wow! you got Ladder.");
                         break;
                     case SNAKE:
