@@ -12,6 +12,15 @@ namespace SnakeLadder
         // initialize variables
         int playerPosition = START_POSITION;
 
-        //Console.WriteLine($"player position is: {playerPosition}");
+        // initialize random number generator
+        Random random = new Random();
+
+        // Add rolldie method to generate randome die value
+        public int RollDie()
+        {
+            int dieValue = random.Next(1, 7);
+            Console.WriteLine($"Rolled Die and got: {dieValue}");
+            return dieValue;
+        }
     }
 }
