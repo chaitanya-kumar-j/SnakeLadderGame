@@ -7,8 +7,10 @@ namespace SnakeLadder
         static void Main(string[] args)
         {
             // Check Whether player Won or not
-            int dieRollCount = new Play().IsWon();
-            Console.WriteLine($"Hurray! You Won...and taken {dieRollCount} die rolls");
+            var tuple = new Game().Play();
+            int dieRollCount = tuple.Item1;
+            string player = tuple.Item2;
+            Console.WriteLine($"Hurray!... {player} Won in {dieRollCount} die rolls.");
         }
     }
 }
