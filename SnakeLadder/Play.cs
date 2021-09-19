@@ -40,7 +40,7 @@ namespace SnakeLadder
             return new Tuple<int, int, string>(Count, Position, player);
         }
 
-        // Add is won method to check player won or not
+        // Start game
         public Tuple<int, string> Play()
         {
             Console.WriteLine($"{player} will start game.");
